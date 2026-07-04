@@ -9,7 +9,12 @@ elif [ -x /usr/local/bin/brew ]; then
     eval "$(/usr/local/bin/brew shellenv)"
 fi
 
+{{ if eq .chezmoi.hostname "Dimitriss-MacBook-Pro" -}}
+# aerospace's third-party tap must be trusted before brew will load casks from it
+brew trust --tap nikitabobko/tap
+{{ end -}}
 brew bundle --file=/dev/stdin <<EOF
+brew "btop"
 brew "git"
 brew "zsh"
 cask "1password"
