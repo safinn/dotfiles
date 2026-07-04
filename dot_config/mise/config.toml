@@ -1,0 +1,35 @@
+[settings]
+legacy_version_file = false
+experimental = true
+
+[settings.status]
+missing_tools = "always"
+
+[tools]
+btop = "latest"
+starship = "latest"
+node = "latest"
+go = "1.26.3"
+gotestsum = "latest"
+eza = "latest"
+fzf = "0.53"
+bat = "latest"
+lazygit = "latest"
+lazydocker = "latest"
+ripgrep = "latest"
+fd = "latest"
+jq = "latest"
+pnpm = "latest"
+opentofu = "latest"
+neovim = "0.10.4"
+awscli = "latest"
+opencode = "latest"
+watchexec = "latest"
+"aqua:ouch-org/ouch" = "latest"
+usage = "latest"
+gh = "latest"
+golangci-lint = "latest"
+claude-code = "latest"
+1password = "latest"
+chezmoi = "latest"
+

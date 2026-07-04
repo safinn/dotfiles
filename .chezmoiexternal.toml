@@ -1,0 +1,6 @@
+[".zsh/zsh-completions"]
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-completions/archive/refs/heads/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"

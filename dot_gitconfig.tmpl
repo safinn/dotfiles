@@ -1,0 +1,29 @@
+[user]
+  {{ if eq .chezmoi.hostname "Dimitriss-MacBook-Pro" -}}
+  name = Dimitris
+  email = safinn@users.noreply.github.com
+  signingkey =  {{ onepasswordRead "op://Private/Github Signing Key/public key" }}
+  {{- else -}}
+  name = Dimitris
+  email = safinn@users.noreply.github.com
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH3kCjftm/LLNr30jNhTJ85R/XnkGnQFW7ZqxyUeBy4Y
+  {{- end }}
+[init]
+  defaultBranch = main
+[gpg]
+  format = ssh
+[gpg "ssh"]
+  {{ if eq .chezmoi.hostname "Dimitriss-MacBook-Pro" -}}
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+  {{- else -}}
+  program = "/usr/bin/op-ssh-sign"
+  {{- end }}
+[commit]
+  gpgsign = true
+[core]
+  editor = nvim
+[alias]
+  st = status
+  co = checkout
+  pushf = push -f
+

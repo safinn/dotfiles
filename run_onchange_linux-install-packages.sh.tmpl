@@ -1,0 +1,35 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/sh
+set -eu
+
+# Linux counterpart of the darwin packages script.
+if command -v pacman >/dev/null 2>&1; then
+    # bootstrap yay so one command can install both repo and AUR packages
+    if ! command -v yay >/dev/null 2>&1; then
+        sudo pacman -Syu --needed --noconfirm base-devel git
+        yay_build=$(mktemp -d)
+        git clone https://aur.archlinux.org/yay-bin.git "$yay_build"
+        (cd "$yay_build" && makepkg -si --noconfirm)
+        rm -rf "$yay_build"
+    fi
+
+    yay -Syu --needed --noconfirm \
+        git \
+        zsh \
+        wezterm \
+        otf-monaspace-nerd \
+        firefox \
+        docker \
+        dbeaver \
+        1password \
+        bruno-bin \
+        visual-studio-code-bin
+elif command -v apt-get >/dev/null 2>&1; then
+    sudo apt-get update
+    sudo apt-get install -y zsh git
+elif command -v dnf >/dev/null 2>&1; then
+    sudo dnf install -y zsh git
+else
+    echo "warning: unrecognised package manager, install zsh manually" >&2
+fi
+{{ end -}}
