@@ -2,4 +2,5 @@ README.md
 bootstrap.sh
 {{- if ne .chezmoi.hostname "Dimitriss-MacBook-Pro" }}
 .aerospace.toml
+.ssh/config
 {{- end }}
