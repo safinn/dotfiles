@@ -13,10 +13,12 @@ if command -v pacman >/dev/null 2>&1; then
         rm -rf "$yay_build"
     fi
 
+    # wezterm-nightly-bin instead of extra/wezterm: the repo package is a
+    # stale 2024-02 build with known breakage on current Hyprland/Wayland
     yay -Syu --needed --noconfirm \
         git \
         zsh \
-        wezterm \
+        wezterm-nightly-bin \
         otf-monaspace-nerd \
         firefox \
         docker \

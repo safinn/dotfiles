@@ -1,9 +1,14 @@
+{{- $personal := promptBoolOnce . "personal" "personal machine" }}
+
 encryption = "age"
+
+[data]
+    personal = {{ $personal }}
 
 [age]
     identity = "{{ .chezmoi.homeDir }}/.config/chezmoi/key.txt"
     recipient = "age1nll2llxdq2wya6vrfepjaz2u2aajrm9sr5n46d7vzxpxc7fsy52s39l2em"
-{{- if eq .chezmoi.hostname "Dimitriss-MacBook-Pro" }}
+{{- if $personal }}
 
 [hooks.read-source-state.pre]
     command = "{{ .chezmoi.sourceDir }}/.hooks/install-age-key.sh"

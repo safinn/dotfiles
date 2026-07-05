@@ -1,6 +1,9 @@
 README.md
 bootstrap.sh
-{{- if ne .chezmoi.hostname "Dimitriss-MacBook-Pro" }}
+# aerospace is a macOS-only window manager: skip on work machines and Linux
+{{- if or (not .personal) (ne .chezmoi.os "darwin") }}
 .aerospace.toml
+{{- end }}
+{{- if not .personal }}
 .ssh/config
 {{- end }}

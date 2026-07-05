@@ -11,6 +11,11 @@ Managed by [chezmoi](https://www.chezmoi.io).
    sh -c "$(curl -fsSL https://raw.githubusercontent.com/safinn/dotfiles/main/bootstrap.sh)"
    ```
 
+   `chezmoi init` asks `personal machine?` once and remembers the answer.
+   Personal machines get the ssh config, the 1Password-backed git signing key
+   and age decryption key, and aerospace (macOS only); work machines get the
+   work app set and a hardcoded signing key instead.
+
 2. Sign in to 1Password so chezmoi templates can read secrets:
    - with the 1Password app: enable Settings -> Developer -> Integrate with 1Password CLI
    - CLI only: `op account add` (needs your Secret Key)

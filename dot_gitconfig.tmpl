@@ -1,5 +1,5 @@
 [user]
-  {{ if eq .chezmoi.hostname "Dimitriss-MacBook-Pro" -}}
+  {{ if .personal -}}
   name = Dimitris
   email = safinn@users.noreply.github.com
   signingkey =  {{ onepasswordRead "op://Private/Github Signing Key/public key" }}
@@ -13,10 +13,10 @@
 [gpg]
   format = ssh
 [gpg "ssh"]
-  {{ if eq .chezmoi.hostname "Dimitriss-MacBook-Pro" -}}
+  {{ if eq .chezmoi.os "darwin" -}}
   program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
   {{- else -}}
-  program = "/usr/bin/op-ssh-sign"
+  program = "/opt/1Password/op-ssh-sign"
   {{- end }}
 [commit]
   gpgsign = true
