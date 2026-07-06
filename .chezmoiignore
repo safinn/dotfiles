@@ -4,6 +4,3 @@ bootstrap.sh
 {{- if or (not .personal) (ne .chezmoi.os "darwin") }}
 .aerospace.toml
 {{- end }}
-{{- if not .personal }}
-.ssh/config
-{{- end }}
