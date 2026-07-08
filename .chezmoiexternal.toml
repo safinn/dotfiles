@@ -4,3 +4,13 @@
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
+
+# darwin only: omarchy ships its own LazyVim setup on linux
+{{ if eq .chezmoi.os "darwin" -}}
+# exact intentionally off: lazy.nvim writes lazy-lock.json into this dir
+[".config/nvim"]
+    type = "archive"
+    url = "https://github.com/LazyVim/starter/archive/refs/heads/main.tar.gz"
+    stripComponents = 1
+    refreshPeriod = "168h"
+{{- end }}

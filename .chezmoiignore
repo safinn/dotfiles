@@ -4,3 +4,8 @@ bootstrap.sh
 {{- if or (not .personal) (ne .chezmoi.os "darwin") }}
 .aerospace.toml
 {{- end }}
+# omarchy ships its own LazyVim setup on linux: leave nvim config alone
+{{- if ne .chezmoi.os "darwin" }}
+.config/nvim
+.config/nvim/**
+{{- end }}
