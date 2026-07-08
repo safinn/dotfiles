@@ -6,7 +6,7 @@
   {{- else -}}
   name = Dimitris
   email = safinn@users.noreply.github.com
-  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH3kCjftm/LLNr30jNhTJ85R/XnkGnQFW7ZqxyUeBy4Y
+  signingkey = {{ onepasswordRead "op://Employee/Github RL Signing Key/public key" }}
   {{- end }}
 [init]
   defaultBranch = main

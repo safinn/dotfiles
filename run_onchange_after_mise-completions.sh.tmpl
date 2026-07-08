@@ -1,0 +1,11 @@
+#!/bin/sh
+# Regenerate the mise zsh completion whenever the mise version changes.
+# The version comment below is templated by chezmoi; when it changes, chezmoi
+# re-runs this script. This keeps ~/.zsh/completions/_mise in sync with the
+# installed mise/usage completion format (a stale copy silently breaks task
+# completion, e.g. `mise r db:<TAB>`).
+#
+# mise version: {{ output "mise" "--version" }}
+set -eu
+mkdir -p "$HOME/.zsh/completions"
+mise completion zsh > "$HOME/.zsh/completions/_mise"
