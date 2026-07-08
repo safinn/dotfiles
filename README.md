@@ -12,9 +12,9 @@ Managed by [chezmoi](https://www.chezmoi.io).
    ```
 
    `chezmoi init` asks `personal machine?` once and remembers the answer.
-   Personal machines get the ssh config, the 1Password-backed git signing key
-   and age decryption key, and aerospace (macOS only); work machines get the
-   work app set and a hardcoded signing key instead.
+   Personal machines get the 1Password-backed private ssh hosts and git
+   signing key, and aerospace (macOS only); work machines get the work app
+   set and a hardcoded signing key instead.
 
 2. Sign in to 1Password so chezmoi templates can read secrets:
    - with the 1Password app: enable Settings -> Developer -> Integrate with 1Password CLI
