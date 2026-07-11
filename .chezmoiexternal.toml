@@ -5,6 +5,41 @@
     stripComponents = 1
     refreshPeriod = "168h"
 
+# agent skills: .agents/skills is the canonical copy; .claude/skills is a
+# chezmoi-managed symlink to it (see dot_claude/symlink_skills), so every
+# skill is available to every harness
+
+# mattpocock/skills: productivity + engineering categories, flattened so each
+# skill lands at skills/<name>/SKILL.md. Patterns match pre-strip archive paths;
+# [!R]* matches the skill dir entries (required for apply) but not the category
+# README.md. exact intentionally off: this dir also holds skills from other sources.
+[".agents/skills"]
+    type = "archive"
+    url = "https://github.com/mattpocock/skills/archive/refs/heads/main.tar.gz"
+    stripComponents = 3
+    include = ["*/skills/productivity/[!R]*", "*/skills/engineering/[!R]*", "*/skills/productivity/*/**/*", "*/skills/engineering/*/**/*"]
+    refreshPeriod = "168h"
+
+# single-skill repo, targeted at the skill dir itself (nests inside the
+# mattpocock external's target; fine as long as no individual entry collides)
+[".agents/skills/karpathy-guidelines"]
+    type = "archive"
+    url = "https://github.com/multica-ai/andrej-karpathy-skills/archive/refs/heads/main.tar.gz"
+    exact = true
+    stripComponents = 3
+    include = ["*/skills/karpathy-guidelines/**"]
+    refreshPeriod = "168h"
+
+# cursor-team-kit: only the skills listed here, targeted per skill dir
+{{ range $skill := list "thermo-nuclear-code-quality-review" "fix-merge-conflicts" }}
+[".agents/skills/{{ $skill }}"]
+    type = "archive"
+    url = "https://github.com/cursor/plugins/archive/refs/heads/main.tar.gz"
+    exact = true
+    stripComponents = 4
+    include = ["*/cursor-team-kit/skills/{{ $skill }}/**"]
+    refreshPeriod = "168h"
+{{ end }}
 # darwin only: omarchy ships its own LazyVim setup on linux
 {{ if eq .chezmoi.os "darwin" -}}
 # exact intentionally off: lazy.nvim writes lazy-lock.json into this dir
