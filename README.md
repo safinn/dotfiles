@@ -34,8 +34,9 @@ symlinked to it so every skill is available in every harness. They are pulled
 from public repos ([mattpocock/skills](https://github.com/mattpocock/skills),
 [andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills),
 [cursor-team-kit](https://github.com/cursor/plugins)) as chezmoi externals
-(`.chezmoiexternal.toml`), refreshed weekly or on demand with
-`chezmoi apply --refresh-externals`. Hand-installed skills in `~/.agents/skills`
+(`.chezmoiexternal.toml`). Updates land on `chezmoi apply`: the downloaded
+archives are cached for a week, so apply picks up upstream changes at most
+weekly, or immediately with `chezmoi apply --refresh-externals`. Hand-installed skills in `~/.agents/skills`
 are left alone but won't sync across machines.
 
 ## Completions
