@@ -1,0 +1,90 @@
+# Package intent: every app the machines should have, one row per app.
+# The install scripts (run_onchange_*-install-packages.sh.tmpl) render from
+# this data — add or remove a row and the scripts re-run on the next apply.
+#
+# Field presence picks the platform and mechanism:
+#   brew / cask / tap  -> darwin, via brew bundle (taps are trusted first)
+#   arch               -> linux, via yay (repo or AUR name)
+# A missing field means the app is not installed on that OS.
+#
+# scope = "personal" | "work"; omitted means every machine.
+#
+# Not covered here: the apt/dnf fallback in the linux script stays a
+# hardcoded bootstrap minimum, and mise owns dev-runtime versioning.
+
+[[packages]]
+name = "git"
+brew = "git"
+arch = "git"
+
+[[packages]]
+name = "zsh"
+brew = "zsh"
+arch = "zsh"
+
+[[packages]]
+name = "btop"
+brew = "btop"
+arch = "btop"
+
+[[packages]]
+name = "1password"
+cask = "1password"
+arch = "1password"
+
+[[packages]]
+name = "monaspace-nerd-font"
+cask = "font-monaspice-nerd-font"
+arch = "otf-monaspace-nerd"
+
+[[packages]]
+name = "visual-studio-code"
+cask = "visual-studio-code"
+arch = "visual-studio-code-bin"
+
+[[packages]]
+name = "wezterm"
+cask = "wezterm"
+# extra/wezterm is a stale 2024-02 build with known breakage on current
+# Hyprland/Wayland; track the nightly AUR package instead
+arch = "wezterm-nightly-bin"
+
+[[packages]]
+name = "firefox"
+cask = "firefox"
+arch = "firefox"
+scope = "personal"
+
+[[packages]]
+name = "itsycal"
+cask = "itsycal"
+scope = "personal"
+
+[[packages]]
+name = "aerospace"
+tap = "nikitabobko/tap"
+cask = "nikitabobko/tap/aerospace"
+scope = "personal"
+
+[[packages]]
+name = "google-chrome"
+cask = "google-chrome"
+scope = "work"
+
+[[packages]]
+name = "docker"
+cask = "docker-desktop"
+arch = "docker"
+scope = "work"
+
+[[packages]]
+name = "bruno"
+cask = "bruno"
+arch = "bruno-bin"
+scope = "work"
+
+[[packages]]
+name = "dbeaver"
+cask = "dbeaver-community"
+arch = "dbeaver"
+scope = "work"

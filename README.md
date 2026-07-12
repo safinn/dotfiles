@@ -27,6 +27,20 @@ Managed by [chezmoi](https://www.chezmoi.io).
    chezmoi apply && mise install
    ```
 
+## Packages
+
+App installs are driven by `.chezmoidata/packages.toml`: one `[[packages]]`
+row per app. `brew`/`cask`/`tap` name the darwin package, `arch` the linux
+one; a missing field means the app isn't installed on that OS. `scope`
+limits a row to `personal` or `work` machines; omitted means everyone.
+The install scripts (`run_onchange_*-install-packages.sh.tmpl`) render from
+this data, so adding an app is one row — and because the rendered script
+text changes, the installers re-run on the next `chezmoi apply`.
+
+Dev runtimes and CLI tools are versioned by mise (`dot_config/mise/config.toml`),
+not here; the apt/dnf fallback in the linux script is a hardcoded bootstrap
+minimum (`zsh`, `git`).
+
 ## Agent skills
 
 Skills for coding agents live in `~/.agents/skills`, with `~/.claude/skills`
