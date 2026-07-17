@@ -21,7 +21,6 @@ jq = "latest"
 pnpm = "latest"
 opentofu = "latest"
 neovim = "0.12.4"
-awscli = "latest"
 opencode = "latest"
 watchexec = "latest"
 "aqua:ouch-org/ouch" = "latest"
@@ -31,4 +30,7 @@ golangci-lint = "latest"
 claude-code = "latest"
 1password = "latest"
 chezmoi = "latest"
-
+{{- if not .personal }}
+awscli = "latest"
+"github:getsentry/cli" = { version = "latest", exe = "sentry" }
+{{- end }}
