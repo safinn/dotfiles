@@ -30,6 +30,17 @@
     include = ["*/skills/karpathy-guidelines/**"]
     refreshPeriod = "168h"
 
+# diagram-design: plugin repo, but only the skill dir is taken. The repo's six
+# slash commands are plugin-scoped wrappers over references/ in this same skill,
+# so the skill alone is self-sufficient.
+[".agents/skills/diagram-design"]
+    type = "archive"
+    url = "https://github.com/cathrynlavery/diagram-design/archive/refs/heads/main.tar.gz"
+    exact = true
+    stripComponents = 3
+    include = ["*/skills/diagram-design/**"]
+    refreshPeriod = "168h"
+
 # cursor-team-kit: only the skills listed here, targeted per skill dir
 {{ range $skill := list "thermo-nuclear-code-quality-review" "fix-merge-conflicts" }}
 [".agents/skills/{{ $skill }}"]
